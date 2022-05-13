@@ -2,17 +2,15 @@
  * @file kernel_module.c
  * @author Ji Gaoqiang (jigaoqiang@bolean.com.cn)
  * @brief It's a Loadable kernel module that hooks the `execve` system call.
- * Before real syscall execve, it will call `guard_main(user_pathname,
- * user_argv, user_envp)` if `guard_main` return 0, real execve won't do. if
- * `guard_main` return not 0, real execve will do
+ * Before real syscall execve, it will call `before_execve(user_pathname,
+ * user_argv, user_envp)` 
+ * After real syscall execve. it will call `after_execve(user_pathname, 
+ * user_argb, user_envp)`
  *
- * The log can be filtered by `dmesg | grep [Gurad]`
  * @version 0.1
  * @date 2021-11-15
  *
  * @copyright Copyright (c) 2021
- *
- * // TODO 检查类型
  */
 
 #include <linux/delay.h>

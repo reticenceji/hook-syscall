@@ -23,7 +23,6 @@ int before_execve(const char *user_pathname, char *const user_argv[],
         goto fail;
     }
     pr_info("%s execve\n", pathname);
-    return 0;
 
 fail:
     kfree(pathname);
